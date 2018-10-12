@@ -137,7 +137,8 @@ const userSchema = new Schema({
    firstname: { type: String, trim: true, required: true, lowercase: true, validate: firstnameValidators },
    lastname: { type: String, trim: true, required: true, lowercase: true, validate: lastnameValidators },
    email: { type: String, trim: true, required: true, unique: true, lowercase: true, validate: emailValidators },
-   password: { type: String, required: true, validate: passwordValidators }
+   password: { type: String, required: true, validate: passwordValidators },
+   passwordConf: { type: String }
  });
 
 userSchema.pre('save', function(next) {

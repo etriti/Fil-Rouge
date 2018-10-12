@@ -1,0 +1,13 @@
+a.deco-none {
+    color:#000000 !important;
+    text-decoration:none;
+}
+
+.login-btn {
+  margin-right: 10px;
+}
+
+.logo {
+  font-family: 'Sacramento', cursive;
+  font-size: 30px;
+}

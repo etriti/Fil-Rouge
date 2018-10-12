@@ -11,6 +11,10 @@ module.exports = (router) => {
       res.json({ success: false, message:'You must provide an e-mail' });
     } else if (!req.body.password) {
       res.json({ success: false, message:'You must provide a password' });
+    } else if (!req.body.passwordConf) {
+      res.json({ success: false, message:'You must confirm password' });
+    } else if (req.body.passwordConf !== req.body.password) {
+      res.json({ success: false, message:'Password confirmation do not match with your password' });
     } else {
       let user = new User({
         firstname: req.body.firstname,

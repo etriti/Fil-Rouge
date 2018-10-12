@@ -1,0 +1,108 @@
+<h1 class="page-header text-center">Register</h1>
+<br>
+
+<div class="col-md-5 p-lg-5 mx-auto border_form">
+    <form [formGroup]="form" (submit)="onRegisterSubmit()">
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+          <div [ngClass]="{'has-error': (form.controls.firstname.errors && form.controls.firstname.dirty) , 'has-success':(!form.controls.firstname.errors)}">
+              <!-- firstname -->
+              <label for="firstname">Firstname</label>
+              <input class="form-control" type="text" name="firstname" placeholder="Firstname *" formControlName="firstname" >
+              <!-- Firstname Validation -->
+              <ul class="help-block">
+                <li class="text-info" *ngIf="form.controls.firstname.errors?.required && form.controls.firstname.dirty"><small>This field is required</small></li>
+                <li class="text-info" *ngIf="form.controls.firstname.errors?.minlength"><small>Firstname must be at least 2 characters long.</small></li>
+                <li class="text-info" *ngIf="form.controls.firstname.errors?.maxlength"><small>Firstname must be max 30 characters long.</small></li>
+                <li class="text-info" *ngIf="form.controls.firstname.errors?.validateName && form.controls.firstname.dirty"><small>Numbers or special characters not accepted.</small></li>
+              </ul>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+          <div [ngClass]="{'has-error': (form.controls.lastname.errors && form.controls.lastname.dirty) , 'has-success':(!form.controls.lastname.errors)}">
+              <!-- firstname -->
+              <label for="lastname">Lastname</label>
+              <input class="form-control" type="text" name="lastname" placeholder="Lastname *" formControlName="lastname">
+              <!-- Firstname Validation -->
+              <ul class="help-block">
+                <li class="text-info" *ngIf="form.controls.lastname.errors?.required && form.controls.lastname.dirty"><small>This field is required</small></li>
+                <li class="text-info" *ngIf="form.controls.lastname.errors?.minlength"><small>Lastname must be at least 2 characters long.</small></li>
+                <li class="text-info" *ngIf="form.controls.lastname.errors?.maxlength"><small>Lastname must be max 30 characters long.</small></li>
+                <li class="text-info" *ngIf="form.controls.lastname.errors?.validateName && form.controls.lastname.dirty"><small>Numbers or special characters not accepted.</small></li>
+              </ul>
+          </div>
+      </div>
+    </div>
+  </div>
+
+      <div class="form-group">
+        <!-- Email address -->
+          <div [ngClass]="{'has-error': (form.controls.email.errors && form.controls.email.dirty) , 'has-success':(!form.controls.email.errors)}">
+                <!-- Email Input -->
+              <label for="email">Email address</label>
+              <input class="form-control" type="text" name="email" placeholder="E-mail *" formControlName="email">
+              <!-- Email Validation -->
+              <ul class="help-block">
+                <li class="text-info" *ngIf="form.controls.email.errors?.required && form.controls.email.dirty"><small>This field is required</small></li>
+                <li class="text-info" *ngIf="form.controls.email.errors?.validateEmail && form.controls.email.dirty"><small>Email must be valid.</small></li>
+              </ul>
+          </div>
+      </div>
+
+      <div class="form-group">
+            <div [ngClass]="{'has-error': (form.controls.password.errors && form.controls.password.dirty) , 'has-success':(!form.controls.password.errors)}">
+                <!-- Password -->
+                <label for="firstPassword">Password</label>
+                <input class="form-control" type="password" name="password" placeholder="Password *" formControlName="password">
+                <!-- Password Validation -->
+                <ul class="help-block">
+                  <li class="text-info" *ngIf="form.controls.password.errors?.required && form.controls.password.dirty"><small>This field is required</small></li>
+                  <li class="text-info" *ngIf="form.controls.password.errors?.minlength"><small>Password must be at least 8 characters long.</small></li>
+                  <li class="text-info" *ngIf="form.controls.password.errors?.maxlength"><small>Password must be max 30 characters long.</small></li>
+                  <li class="text-info" *ngIf="form.controls.password.errors?.validatePassword && form.controls.password.dirty"><small>Password should conatin letters and at least 1 number</small></li>
+                </ul>
+            </div>
+      </div>
+
+      <div class="form-group">
+            <div [ngClass]="{'has-error': (form.controls.passwordConf.errors && form.controls.passwordConf.dirty) , 'has-success':(!form.controls.passwordConf.errors)}">
+                <!-- Confirm Password -->
+                <label for="confirmPassword">Confirm Password</label>
+                <input class="form-control" type="password" name="passwordConf" placeholder="Confirm Password *"  formControlName="passwordConf">
+                <!-- Confirm Password Validation -->
+                <ul class="help-block">
+                  <li class="text-info" *ngIf="form.controls.passwordConf.errors?.required && form.controls.passwordConf.dirty"><small>This field is required</small></li>
+                  <li class="text-info" *ngIf="form.errors?.matchingPassword && form.controls.passwordConf.dirty"><small>Passwords do not match</small></li>
+                </ul>
+            </div>
+      </div>
+
+      <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-block">Sign Up</button>
+    </form>
+    <!-- <br>
+    <div class="jumbotron text-center">
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <p>Loading...</p>
+    </div>
+
+            <br> -->
+
+    <!-- <div class="show-hide-message" ng-show="register.errorMsg">
+        <div class="alert alert-danger text-center">{{ register.errorMsg }}</div>
+    </div>
+             <br>
+
+    <div class="show-hide-message" ng-show="register.successMsg">
+        <div class="alert alert-success text-center">{{ register.successMsg }}</div>
+    </div> -->
+
+</div>
+
+<p>email: {{ form.controls.email.value }}</p>
