@@ -6,7 +6,10 @@ const config = require('./config/database');
 const path = require('path');
 const authentication = require('./routes/authentication')(router);
 const bodyParser = require('body-parser');
+const cors = require('cors')
 
+
+//Database connection
 mongoose.Promise = global.Promise;
 mongoose.connect(config.uri, { useNewUrlParser: true }, (err) => {
   if (err) {
@@ -16,19 +19,28 @@ mongoose.connect(config.uri, { useNewUrlParser: true }, (err) => {
   }
 });
 
+// Middleware
+
+//required only to send cross data from frontend to backend
+app.use(cors({
+  origin: 'http://localhost:4200',
+}));
+
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json())
-app.use(express.static(__dirname + '/client/dist'));
+app.use(express.static(__dirname + '/client/dist')); //Provide static directory for frontend
 app.use('/authentication', authentication);
 
+//Connect server to Angular 5 Index.html
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/dist/index.html'));
 });
 
+//Listening port of the server
 app.listen(8080, () => {
   console.log('Listening on port 8080');
 });

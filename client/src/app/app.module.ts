@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthService } from './services/auth.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,10 @@ import { RegisterComponent } from './components/register/register.component';
     // FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

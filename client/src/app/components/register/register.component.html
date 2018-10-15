@@ -2,6 +2,13 @@
 <br>
 
 <div class="col-md-5 p-lg-5 mx-auto border_form">
+
+  <div class="show-hide-message">
+    <div class="text-center" [ngClass]="messageClass">
+      {{ message }}
+    </div>
+  </div>
+
     <form [formGroup]="form" (submit)="onRegisterSubmit()">
 
   <div class="row">
@@ -42,14 +49,15 @@
 
       <div class="form-group">
         <!-- Email address -->
-          <div [ngClass]="{'has-error': (form.controls.email.errors && form.controls.email.dirty) , 'has-success':(!form.controls.email.errors)}">
+          <div [ngClass]="{'has-error': (form.controls.email.errors && form.controls.email.dirty) || (!emailValid && form.controls.email.dirty)  , 'has-success':(!form.controls.email.errors && emailValid)}">
                 <!-- Email Input -->
               <label for="email">Email address</label>
-              <input class="form-control" type="text" name="email" placeholder="E-mail *" formControlName="email">
+              <input (blur)="CheckEmail()" class="form-control" type="text" name="email" placeholder="E-mail *" formControlName="email">
               <!-- Email Validation -->
               <ul class="help-block">
                 <li class="text-info" *ngIf="form.controls.email.errors?.required && form.controls.email.dirty"><small>This field is required</small></li>
                 <li class="text-info" *ngIf="form.controls.email.errors?.validateEmail && form.controls.email.dirty"><small>Email must be valid.</small></li>
+                <li class="text-info" *ngIf="emailMessage"><small>{{ emailMessage }}</small></li>
               </ul>
           </div>
       </div>
@@ -82,7 +90,7 @@
             </div>
       </div>
 
-      <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-block">Sign Up</button>
+      <button [disabled]="!form.valid || processing || emailValid" type="submit" class="btn btn-primary btn-block">Sign Up</button>
     </form>
     <!-- <br>
     <div class="jumbotron text-center">
@@ -104,5 +112,3 @@
     </div> -->
 
 </div>
-
-<p>email: {{ form.controls.email.value }}</p>

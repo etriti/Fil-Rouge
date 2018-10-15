@@ -17,8 +17,8 @@ module.exports = (router) => {
       res.json({ success: false, message:'Password confirmation do not match with your password' });
     } else {
       let user = new User({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
+        firstname: req.body.firstname.toLowerCase(),
+        lastname: req.body.lastname.toLowerCase(),
         email: req.body.email.toLowerCase(),
         password: req.body.password
       });
@@ -48,6 +48,28 @@ module.exports = (router) => {
       });
     }
   });
+
+  router.get('/checkEmailExistance/:email', (req, res) => {
+  // Check if email was provided in paramaters
+  if (!req.params.email) {
+    res.json({ success: false, message: 'E-mail was not provided' }); // Return error
+  } else {
+    // Search for user's e-mail in database;
+    User.findOne({ email: req.params.email }, (err, user) => {
+      if (err) {
+        res.json({ success: false, message: err }); // Return connection error
+      } else {
+        // Check if user's e-mail is taken
+        if (user) {
+          res.json({ success: false, message: 'E-mail is already taken' }); // Return as taken e-mail
+        } else {
+          res.json({ success: true, message: 'E-mail is available' }); // Return as available e-mail
+        }
+      }
+    });
+  }
+});
+
 
   return router;
 }
