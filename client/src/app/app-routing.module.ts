@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 
 const appRoutes: Routes = [
@@ -14,6 +15,9 @@ const appRoutes: Routes = [
   },
   { path: 'register',
     component: RegisterComponent
+  },
+  { path: 'privacy',
+    component: PrivacyComponent
   },
   { path: '**',
     component: HomeComponent }
