@@ -11,3 +11,7 @@ a.deco-none {
   font-family: 'Sacramento', cursive;
   font-size: 30px;
 }
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
