@@ -14,6 +14,7 @@ import { AuthService } from './services/auth.service';
 import { HttpModule } from '@angular/http';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { TermsComponent } from './components/terms/terms.component';
+import { CompanyComponent } from './components/company/company.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TermsComponent } from './components/terms/terms.component';
     FooterComponent,
     RegisterComponent,
     PrivacyComponent,
-    TermsComponent
+    TermsComponent,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,

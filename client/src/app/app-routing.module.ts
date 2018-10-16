@@ -5,11 +5,15 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { TermsComponent } from './components/terms/terms.component';
+import { CompanyComponent } from './components/company/company.component';
 
 
 const appRoutes: Routes = [
   { path: '',
     component: HomeComponent
+  },
+  { path: 'company',
+    component: CompanyComponent
   },
   { path: 'dashboard',
     component: DashboardComponent
