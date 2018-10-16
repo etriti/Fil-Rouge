@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
 import { HttpModule } from '@angular/http';
 import { PrivacyComponent } from './components/privacy/privacy.component';
+import { TermsComponent } from './components/terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
     DashboardComponent,
     FooterComponent,
     RegisterComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,
