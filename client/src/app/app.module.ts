@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
 import { HttpModule } from '@angular/http';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpModule } from '@angular/http';
     HomeComponent,
     DashboardComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
