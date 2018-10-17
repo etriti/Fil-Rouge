@@ -1,0 +1,15 @@
+.slide-images {
+  max-height: 50vh;
+}
+
+.slider-text {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.slider-text h1 {
+  font-size: 10vh;
+}
+
+.slider-text p {
+  font-size: 5vh;
+}
