@@ -42,6 +42,8 @@ import { OrderStatementComponent } from './components/order-statement/order-stat
 import { AssistanceComponent } from './components/assistance/assistance.component';
 import { LoginComponent } from './components/login/login.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { AuthGuard } from './guards/auth.guard';
+import { NotAuthGuard } from './guards/notAuth.guard';
 
 @NgModule({
   declarations: [
@@ -90,7 +92,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     HttpModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard, NotAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

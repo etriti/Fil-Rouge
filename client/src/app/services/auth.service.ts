@@ -15,8 +15,7 @@ user;
 options;
 
   constructor(
-    private http: Http,
-    // public jwtHelper: JwtHelperService
+    private http: Http
   ) { }
 
   createAuthenticationHeader() {

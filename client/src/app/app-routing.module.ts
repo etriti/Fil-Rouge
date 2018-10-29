@@ -32,6 +32,8 @@ import { OrderHistoryComponent } from './components/order-history/order-history.
 import { OrderStatementComponent } from './components/order-statement/order-statement.component';
 import { AssistanceComponent } from './components/assistance/assistance.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
+import { NotAuthGuard } from './guards/notAuth.guard';
 
 
 const appRoutes: Routes = [
@@ -107,37 +109,46 @@ const appRoutes: Routes = [
 
   // Customer
   { path: 'customer',
-    component: CustomerComponent
+    component: CustomerComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'customer/account',
-    component: AccountComponent
+    component: AccountComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'customer/orders',
-    component: OrdersComponent
+    component: OrdersComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'customer/orders/current',
-    component: CurrentOrdersComponent
+    component: CurrentOrdersComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'customer/orders/history',
-    component: OrderHistoryComponent
+    component: OrderHistoryComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'customer/orders/statement',
-    component: OrderStatementComponent
+    component: OrderStatementComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'customer/assistance',
-    component: AssistanceComponent
+    component: AssistanceComponent,
+    canActivate: [AuthGuard]
   },
 
 //////////////////
 
   // Register
   { path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [NotAuthGuard]
   },
 
   // Login
   { path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [NotAuthGuard]
   },
 
   // Terms and Privacy
