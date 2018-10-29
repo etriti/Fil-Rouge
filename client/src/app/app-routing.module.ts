@@ -31,6 +31,7 @@ import { CurrentOrdersComponent } from './components/current-orders/current-orde
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { OrderStatementComponent } from './components/order-statement/order-statement.component';
 import { AssistanceComponent } from './components/assistance/assistance.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const appRoutes: Routes = [
@@ -128,9 +129,18 @@ const appRoutes: Routes = [
   },
 
 //////////////////
+
+  // Register
   { path: 'register',
     component: RegisterComponent
   },
+
+  // Login
+  { path: 'login',
+    component: LoginComponent
+  },
+
+  // Terms and Privacy
   { path: 'terms',
     component: TermsComponent
   },

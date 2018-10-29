@@ -40,6 +40,8 @@ import { CurrentOrdersComponent } from './components/current-orders/current-orde
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { OrderStatementComponent } from './components/order-statement/order-statement.component';
 import { AssistanceComponent } from './components/assistance/assistance.component';
+import { LoginComponent } from './components/login/login.component';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,8 @@ import { AssistanceComponent } from './components/assistance/assistance.componen
     CurrentOrdersComponent,
     OrderHistoryComponent,
     OrderStatementComponent,
-    AssistanceComponent
+    AssistanceComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +87,8 @@ import { AssistanceComponent } from './components/assistance/assistance.componen
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

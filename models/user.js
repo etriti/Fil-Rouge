@@ -138,7 +138,8 @@ const userSchema = new Schema({
    lastname: { type: String, trim: true, required: true, lowercase: true, validate: lastnameValidators },
    email: { type: String, trim: true, required: true, unique: true, lowercase: true, validate: emailValidators },
    password: { type: String, required: true, validate: passwordValidators },
-   passwordConf: { type: String }
+   passwordConf: { type: String },
+   date: { type: Date, default: Date.now }
  });
 
 userSchema.pre('save', function(next) {
@@ -152,7 +153,7 @@ userSchema.pre('save', function(next) {
   });
 });
 
-userSchema.methods.comparePassword = (password) => {
+userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password)
 }
 

@@ -11,6 +11,7 @@ a.deco-none {
 .logo {
   font-family: 'Sacramento', cursive;
   font-size: 30px;
+  text-shadow: 1px 1px 15px #5995e842;
 }
 
 .dropdown:hover>.dropdown-menu {

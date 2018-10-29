@@ -1,4 +1,7 @@
+<div class="container">
+  <br>
 <h1 class="page-header text-center">Register</h1>
+<hr>
 <br>
 
 <div class="col-md-5 p-lg-5 mx-auto border_form">
@@ -93,30 +96,12 @@
       <div class="form-check">
         <div [ngClass]="{'has-error': !conditions , 'has-success':conditions}">
             <input #conditions (change)="conditions.checked" type="checkbox" class="form-check-input">
-            <label class="form-check-label" for="exampleCheck1">Check here to indicate that you have read and agree to the terms of the <a href="#">Fil Rouge Customer Agreement</a></label>
+            <label class="form-check-label" for="exampleCheck1">Check here to indicate that you have read and agree to the terms of the <a href="/terms">Fil Rouge Customer Agreement</a></label>
         </div>
       </div>
-      <br> 
+      <br>
 
       <button [disabled]="!form.valid || processing || emailValid || !conditions.checked" type="submit" class="btn btn-primary btn-block">Sign Up</button>
     </form>
-    <!-- <br>
-    <div class="jumbotron text-center">
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <p>Loading...</p>
-    </div>
-
-            <br> -->
-
-    <!-- <div class="show-hide-message" ng-show="register.errorMsg">
-        <div class="alert alert-danger text-center">{{ register.errorMsg }}</div>
-    </div>
-             <br>
-
-    <div class="show-hide-message" ng-show="register.successMsg">
-        <div class="alert alert-success text-center">{{ register.successMsg }}</div>
-    </div> -->
-
+</div>
 </div>
