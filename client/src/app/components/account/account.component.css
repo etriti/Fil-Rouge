@@ -1364,3 +1364,7 @@ img.editable {
 .grey {
     color: #777!important
 }
+
+.m_firstname {
+  text-transform: capitalize;
+}
