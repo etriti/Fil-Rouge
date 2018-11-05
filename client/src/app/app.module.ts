@@ -44,6 +44,8 @@ import { LoginComponent } from './components/login/login.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
+import { RoleGuardService } from './guards/role-guard.service';
+import { Error401Component } from './components/error401/error401.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,8 @@ import { NotAuthGuard } from './guards/notAuth.guard';
     OrderHistoryComponent,
     OrderStatementComponent,
     AssistanceComponent,
-    LoginComponent
+    LoginComponent,
+    Error401Component
   ],
   imports: [
     BrowserModule,
@@ -92,7 +95,7 @@ import { NotAuthGuard } from './guards/notAuth.guard';
     HttpModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, NotAuthGuard],
+  providers: [AuthService, AuthGuard, NotAuthGuard, RoleGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,3 +21,13 @@ a.deco-none {
 a {
   font-family: 'Maven Pro', sans-serif;
 }
+
+img.customer_avatar {
+  border-radius: 50%;
+  height: 27px;
+}
+
+a#dropdown06.nav-link.dropdown-toggle.text-dark {
+  padding-bottom: 0px;
+  padding-top: 5px;
+}

@@ -139,6 +139,7 @@ const userSchema = new Schema({
    email: { type: String, trim: true, required: true, unique: true, lowercase: true, validate: emailValidators },
    password: { type: String, required: true, validate: passwordValidators },
    passwordConf: { type: String },
+   permission: { type: String, required: true, default: 'user' },
    date: { type: Date, default: Date.now }
  });
 

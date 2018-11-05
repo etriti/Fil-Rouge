@@ -3,6 +3,8 @@ import { Http , Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators';
 import { tokenNotExpired } from 'angular2-jwt';
+import { Router, ActivatedRouteSnapshot } from '@angular/router';
+import decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,8 @@ user;
 options;
 
   constructor(
-    private http: Http
+    private http: Http,
+    private router: Router
   ) { }
 
   createAuthenticationHeader() {
@@ -49,7 +52,8 @@ options;
     this.authToken = null;
     this.user = null;
     localStorage.clear();
-    window.location.reload();
+    // this.router.navigate(['/'])
+    // window.location.reload();
   }
 
   // Store the token and the user in the browser
@@ -67,6 +71,20 @@ options;
 
   loggedIn() {
     return tokenNotExpired();
+  }
+
+  hasAccess() {
+
+    const expectedRole1 = "admin";
+    const expectedRole2 = "user";
+    const token = localStorage.getItem('token');
+
+    // if ((decode(token).role === expectedRole1) || (decode(token).role === expectedRole2)) {
+    if (decode(token).role === expectedRole1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

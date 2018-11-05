@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
           } else {
             this.router.navigate(['/'])
           }
-        }, 2000);
+        }, 1000);
       }
 
     });

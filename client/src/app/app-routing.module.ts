@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -32,8 +32,10 @@ import { OrderHistoryComponent } from './components/order-history/order-history.
 import { OrderStatementComponent } from './components/order-statement/order-statement.component';
 import { AssistanceComponent } from './components/assistance/assistance.component';
 import { LoginComponent } from './components/login/login.component';
+import { Error401Component } from './components/error401/error401.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
+import { RoleGuardService } from './guards/role-guard.service';
 
 
 const appRoutes: Routes = [
@@ -158,8 +160,26 @@ const appRoutes: Routes = [
   { path: 'privacy',
     component: PrivacyComponent
   },
+
+  // Errors
+  { path: 'access_denied',
+    component: Error401Component
+  },
+
+
+  //DASHBOARD
+  { path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard, RoleGuardService],
+    data: {
+      expectedRole: 'admin'
+    }
+  },
+
+/////// OThER
   { path: '**',
-    component: HomeComponent }
+    component: HomeComponent
+  }
 ];
 
 @NgModule({
