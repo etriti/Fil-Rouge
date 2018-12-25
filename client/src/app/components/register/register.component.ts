@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  form: FormGroup;
+  form;
   message;
   messageClass;
   processing = false;
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) {
     this.createForm()
@@ -121,7 +121,7 @@ export class RegisterComponent implements OnInit {
     }
 
     this.authService.registerUser(user).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       if (!data.success) {
         this.messageClass = 'alert alert-danger';
         this.message = data.message;

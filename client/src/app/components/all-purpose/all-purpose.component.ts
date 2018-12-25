@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-all-purpose',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all-purpose.component.css']
 })
 export class AllPurposeComponent implements OnInit {
+  articles;
 
-  constructor() { }
+  constructor(
+    private articleService: ArticleService,
+  ) { }
+
+  All_PurposeArticles() {
+    this.articleService.getAll_purposeArticles().subscribe(data => {
+      this.articles = data.articles;
+      console.log(data);
+    });
+  }
 
   ngOnInit() {
+    this.All_PurposeArticles();
   }
 
 }

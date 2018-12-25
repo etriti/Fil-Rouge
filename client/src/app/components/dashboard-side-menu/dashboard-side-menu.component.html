@@ -1,0 +1,10 @@
+<div class="list-group" id="list-tab" role="tablist">
+  <a class="list-group-item list-group-item-action" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" id="list-home-list" data-toggle="list" routerLink="/dashboard" role="tab" aria-controls="home">Home</a>
+  <a class="list-group-item list-group-item-action" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" id="list-profile-list" data-toggle="list" routerLink="/dashboard/all-articles" role="tab" aria-controls="profile">Articles</a>
+  <a class="list-group-item list-group-item-action" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" id="list-messages-list" data-toggle="list" routerLink="/dashboard/users" role="tab" aria-controls="messages">Users</a>
+  <a class="list-group-item list-group-item-action" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" id="list-settings-list" data-toggle="list" routerLink="" role="tab" aria-controls="settings">Settings</a>
+</div>
+<hr>
+<div class="list-group" id="list-tab" role="tablist">
+  <a class="btn btn-primary login-btn font-weight-normal" routerLink="/dashboard/new-article">+ New Article</a>
+</div>

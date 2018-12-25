@@ -2,23 +2,26 @@ import { Injectable } from '@angular/core';
 import { Http , Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators';
-import { tokenNotExpired } from 'angular2-jwt';
+// import { tokenNotExpired } from 'angular2-jwt';
+// import { tokenNotExpired } from '@auth0/angular-jwt';
 import { Router, ActivatedRouteSnapshot } from '@angular/router';
 import decode from 'jwt-decode';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-domain = 'http://localhost:8080';
+domain = 'http://localhost:8080/';
 authToken;
 user;
 options;
 
   constructor(
     private http: Http,
-    private router: Router
+    private router: Router,
+    public jwtHelper: JwtHelperService
   ) { }
 
   createAuthenticationHeader() {
@@ -36,16 +39,16 @@ options;
   }
 
   registerUser(user) {
-    return this.http.post(this.domain + '/authentication/register', user).map(res => res.json());
+    return this.http.post(this.domain + 'authentication/register', user).map(res => res.json());
   }
 
   checkEmailExistance(email) {
-    return this.http.get(this.domain + '/authentication/checkEmailExistance/' + email).map(res => res.json());
+    return this.http.get(this.domain + 'authentication/checkEmailExistance/' + email).map(res => res.json());
   }
 
   // Function to log the user in
   login(user) {
-    return this.http.post(this.domain + '/authentication/login', user).map(res => res.json());
+    return this.http.post(this.domain + 'authentication/login', user).map(res => res.json());
   }
 
   logout() {
@@ -66,15 +69,27 @@ options;
 
   getAccount() {
     this.createAuthenticationHeader();
-    return this.http.get(this.domain + '/authentication/account', this.options).map(res => res.json());
+    return this.http.get(this.domain + 'authentication/account', this.options).map(res => res.json());
   }
 
   loggedIn() {
-    return tokenNotExpired();
+    // console.log(this.jwtHelper.isTokenExpired()); // true or false
+    // // return tokenNotExpired();
+    // return true;
+    // const token = this.jwtHelper.getItem('token');
+    // console.log(token);
+    // if (!token) return false;
+    //
+    // return !this.jwtHelper.isTokenExpired();
+
+  const token = localStorage.getItem('token');
+  console.log("am i loggedIn? " + !this.jwtHelper.isTokenExpired(token));
+  return !this.jwtHelper.isTokenExpired(token);
+
+
   }
 
   hasAccess() {
-
     const expectedRole1 = "admin";
     const expectedRole2 = "user";
     const token = localStorage.getItem('token');
