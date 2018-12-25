@@ -36,6 +36,9 @@ import { Error401Component } from './components/error401/error401.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
 import { RoleGuardService } from './guards/role-guard.service';
+import { NewArticleComponent } from './components/new-article/new-article.component';
+import { DashboardArticlesListComponent } from './components/dashboard-articles-list/dashboard-articles-list.component';
+import { ArticleComponent } from './components/article/article.component';
 
 
 const appRoutes: Routes = [
@@ -62,6 +65,11 @@ const appRoutes: Routes = [
   },
   { path: 'fabrication/environment',
     component: EnvironmentComponent
+  },
+
+  // Article
+  { path: 'article/:_id',
+    component: ArticleComponent
   },
 
   // Products
@@ -170,6 +178,20 @@ const appRoutes: Routes = [
   //DASHBOARD
   { path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard, RoleGuardService],
+    data: {
+      expectedRole: 'admin'
+    }
+  },
+  { path: 'dashboard/new-article',
+    component: NewArticleComponent,
+    canActivate: [AuthGuard, RoleGuardService],
+    data: {
+      expectedRole: 'admin'
+    }
+  },
+  { path: 'dashboard/all-articles',
+    component: DashboardArticlesListComponent,
     canActivate: [AuthGuard, RoleGuardService],
     data: {
       expectedRole: 'admin'
