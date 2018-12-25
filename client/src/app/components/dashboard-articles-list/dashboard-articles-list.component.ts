@@ -16,7 +16,7 @@ export class DashboardArticlesListComponent implements OnInit {
 
   constructor(
     private managementService: ManagementService,
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   getAllArticles() {

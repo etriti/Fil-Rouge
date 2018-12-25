@@ -4,7 +4,8 @@
   "description": "fil-rouge MEAN-Stack Angular 2",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "cd client && ng build --prod && cd.. && node index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/etriti/Fil-Rouge#readme",
   "dependencies": {
+    "@auth0/angular-jwt": "^2.1.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",

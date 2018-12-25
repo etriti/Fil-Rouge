@@ -15,7 +15,7 @@ export class ArticleService {
   title;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private http: Http,
   ) { }
 

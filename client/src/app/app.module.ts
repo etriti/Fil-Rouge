@@ -52,7 +52,16 @@ import { NewArticleComponent } from './components/new-article/new-article.compon
 import { DashboardArticlesListComponent } from './components/dashboard-articles-list/dashboard-articles-list.component';
 import { DashboardSideMenuComponent } from './components/dashboard-side-menu/dashboard-side-menu.component';
 import { TruncatePipe }   from './app.pipe';
+import { ArraySortPipe }   from './app.pipe';
 import { ArticleComponent } from './components/article/article.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userToken = user ? user.token : null;
+  return userToken;
+}
 
 @NgModule({
   declarations: [
@@ -96,7 +105,8 @@ import { ArticleComponent } from './components/article/article.component';
     DashboardArticlesListComponent,
     DashboardSideMenuComponent,
     TruncatePipe,
-    ArticleComponent
+    ArticleComponent,
+    ArraySortPipe
   ],
   imports: [
     BrowserModule,
@@ -105,9 +115,10 @@ import { ArticleComponent } from './components/article/article.component';
     HttpClientModule,
     AppRoutingModule,
     HttpModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    JwtModule.forRoot({})
   ],
-  providers: [AuthService, ArticleService, ManagementService, AuthGuard, NotAuthGuard, RoleGuardService],
+  providers: [AuthService, ArticleService, ManagementService, AuthGuard, NotAuthGuard, RoleGuardService, JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

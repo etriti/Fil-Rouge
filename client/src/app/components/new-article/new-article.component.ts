@@ -22,7 +22,7 @@ export class NewArticleComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    public authService: AuthService,
     private managementService: ManagementService,
     private router: Router
   ) {
