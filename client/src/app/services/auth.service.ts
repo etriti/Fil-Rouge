@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http , Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { map } from 'rxjs/operators';
-import { tokenNotExpired } from 'angular2-jwt';
+// import { tokenNotExpired } from 'angular2-jwt';
+// import { tokenNotExpired } from '@auth0/angular-jwt';
 import { Router, ActivatedRouteSnapshot } from '@angular/router';
 import decode from 'jwt-decode';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,8 @@ options;
 
   constructor(
     private http: Http,
-    private router: Router
+    private router: Router,
+    public jwtHelper: JwtHelperService
   ) { }
 
   createAuthenticationHeader() {
@@ -70,7 +73,20 @@ options;
   }
 
   loggedIn() {
-    return tokenNotExpired();
+    // console.log(this.jwtHelper.isTokenExpired()); // true or false
+    // // return tokenNotExpired();
+    // return true;
+    // const token = this.jwtHelper.getItem('token');
+    // console.log(token);
+    // if (!token) return false;
+    //
+    // return !this.jwtHelper.isTokenExpired();
+
+  const token = localStorage.getItem('token');
+  console.log("am i loggedIn? " + !this.jwtHelper.isTokenExpired(token));
+  return !this.jwtHelper.isTokenExpired(token);
+
+
   }
 
   hasAccess() {

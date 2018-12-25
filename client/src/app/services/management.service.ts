@@ -14,7 +14,7 @@ export class ManagementService {
   options;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private http: Http,
   ) { }
 

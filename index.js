@@ -10,7 +10,8 @@ const articles = require('./routes/articles')(router);
 const authentication = require('./routes/authentication')(router);
 const management = require('./routes/management')(router);
 const bodyParser = require('body-parser');
-const cors = require('cors')
+const cors = require('cors');
+const port = process.env.PORT || 8080;
 
 
 //Database connection
@@ -36,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json())
-app.use(express.static(__dirname + '/client/dist')); //Provide static directory for frontend
+app.use(express.static(__dirname + '/public')); //Provide static directory for frontend
 app.use('/article', article);
 app.use('/articles', articles);
 app.use('/authentication', authentication);
@@ -47,10 +48,10 @@ app.use('/management', management);
 
 //Connect server to Angular 5 Index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/dist/index.html'));
+  res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 //Listening port of the server
-app.listen(8080, () => {
-  console.log('Listening on port 8080');
+app.listen(port, () => {
+  console.log('Listening on port ' + port);
 });
