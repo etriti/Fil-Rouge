@@ -14,7 +14,7 @@ export class AccountComponent implements OnInit {
   email;
 
   constructor(
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit() {

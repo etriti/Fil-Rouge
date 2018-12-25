@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-polyester',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./polyester.component.css']
 })
 export class PolyesterComponent implements OnInit {
+  articles;
 
-  constructor() { }
+  constructor(
+    private articleService: ArticleService,
+  ) { }
+
+  PolyesterArticles() {
+    this.articleService.getPolyesterArticles().subscribe(data => {
+      this.articles = data.articles;
+      console.log(data);
+    });
+  }
 
   ngOnInit() {
+    this.PolyesterArticles();
   }
 
 }

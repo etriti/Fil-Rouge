@@ -11,6 +11,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
+import { ArticleService } from './services/article.service';
+import { ManagementService } from './services/management.service';
 import { HttpModule } from '@angular/http';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { TermsComponent } from './components/terms/terms.component';
@@ -46,6 +48,11 @@ import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
 import { RoleGuardService } from './guards/role-guard.service';
 import { Error401Component } from './components/error401/error401.component';
+import { NewArticleComponent } from './components/new-article/new-article.component';
+import { DashboardArticlesListComponent } from './components/dashboard-articles-list/dashboard-articles-list.component';
+import { DashboardSideMenuComponent } from './components/dashboard-side-menu/dashboard-side-menu.component';
+import { TruncatePipe }   from './app.pipe';
+import { ArticleComponent } from './components/article/article.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +91,12 @@ import { Error401Component } from './components/error401/error401.component';
     OrderStatementComponent,
     AssistanceComponent,
     LoginComponent,
-    Error401Component
+    Error401Component,
+    NewArticleComponent,
+    DashboardArticlesListComponent,
+    DashboardSideMenuComponent,
+    TruncatePipe,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +107,7 @@ import { Error401Component } from './components/error401/error401.component';
     HttpModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, NotAuthGuard, RoleGuardService],
+  providers: [AuthService, ArticleService, ManagementService, AuthGuard, NotAuthGuard, RoleGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

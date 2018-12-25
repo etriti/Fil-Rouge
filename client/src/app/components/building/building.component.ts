@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-building',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./building.component.css']
 })
 export class BuildingComponent implements OnInit {
+  articles;
 
-  constructor() { }
+  constructor(
+    private articleService: ArticleService,
+  ) { }
+
+  BuildingArticles() {
+    this.articleService.getBuildingArticles().subscribe(data => {
+      this.articles = data.articles;
+      console.log(data);
+    });
+  }
 
   ngOnInit() {
+    this.BuildingArticles();
   }
 
 }

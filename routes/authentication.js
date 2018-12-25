@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Article = require('../models/article');
 const config = require('../config/database');
 const jwt = require('jsonwebtoken');
 
@@ -96,11 +97,9 @@ module.exports = (router) => {
               } else {
                 const token = jwt.sign({
                   userId: user._id,
+                  userEmail: user.email,
                   role: user.permission
                 }, config.secret, { expiresIn: '24h' });
-
-
-
                 res.json({ success: true, message: "Success!", token: token, user: { firstname: user.firstname, lastname: user.lastname, email: user.email} });
               }
             }
