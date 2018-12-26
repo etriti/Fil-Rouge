@@ -1,6 +1,9 @@
 {
   "name": "fil-rouge",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.12.0"
+  },
   "description": "fil-rouge MEAN-Stack Angular 2",
   "main": "index.js",
   "scripts": {
