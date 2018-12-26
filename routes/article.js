@@ -17,6 +17,31 @@ module.exports = (router2) => {
     });
   });
 
+  router2.put('/views', (req, res) => {
+    const editViews = req.body.id;
+    if (req.body.views) var newView = req.body.views;
+
+        Article.findOne({ _id : editViews}).exec((err, article) => {
+          if (err) throw err;
+          if (!article) {
+             res.json({ success: false, message: 'No article found' });
+          } else if (!newView) {
+            res.json({ success: false, message: 'View wasnt updated' });
+          } else {
+              article.views = newView; // Assign new view to article
+              // Save changes
+              article.save(function(err) {
+                  if (err) {
+                      console.log(err); // Log error to console
+                  } else {
+                      res.json({ success: true, message: 'View has been updated!' }); // Return success
+                  }
+              });
+          }
+        });
+  });
+
+
 
   return router2;
 }
