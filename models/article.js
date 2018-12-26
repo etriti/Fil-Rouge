@@ -13,7 +13,8 @@ const articleSchema = new Schema({
   price: { type: Number, required: true },
   category: { type: String, required: true },
   author: { type: String, required: true },
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
+  views: { type: Number, required: true, default: 0 }
 });
 
 

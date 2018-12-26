@@ -89,7 +89,7 @@ module.exports = (router) => {
             res.json({ success: false, message: err });
           } else {
             if (!user) {
-              res.json({ success: false, message: "Email was found in our database" });
+              res.json({ success: false, message: "This email was not found in our database" });
             } else {
               const validPassword = user.comparePassword(req.body.password);
               if (!validPassword) {

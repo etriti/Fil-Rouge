@@ -33,6 +33,10 @@ export class ArticleService {
     return this.http.get(this.domain + 'article/' + _id, this.options).map(res => res.json());
   }
 
+  putArticleView(newView) {
+    return this.http.put(this.domain + 'article/views', newView, this.options).map(res => res.json());
+  }
+
   getAllArticles() {
     return this.http.get(this.domain + 'articles/allArticles', this.options).map(res => res.json());
   }

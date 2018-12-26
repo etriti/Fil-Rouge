@@ -13,7 +13,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-domain = '';
+domain = 'http://localhost:8080/';// dev mode
+// domain = '';// prod mode
 authToken;
 user;
 options;
@@ -83,7 +84,7 @@ options;
     // return !this.jwtHelper.isTokenExpired();
 
   const token = localStorage.getItem('token');
-  console.log("am i loggedIn? " + !this.jwtHelper.isTokenExpired(token));
+  // console.log("am i loggedIn? " + !this.jwtHelper.isTokenExpired(token));
   return !this.jwtHelper.isTokenExpired(token);
 
 
