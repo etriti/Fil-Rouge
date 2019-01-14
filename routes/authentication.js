@@ -100,7 +100,8 @@ module.exports = (router) => {
                   userEmail: user.email,
                   role: user.permission
                 }, config.secret, { expiresIn: '24h' });
-                res.json({ success: true, message: "Success!", token: token, user: { firstname: user.firstname, lastname: user.lastname, email: user.email} });
+                // res.json({ success: true, message: "Success!", token: token, user: { firstname: user.firstname, lastname: user.lastname, email: user.email} });
+                res.json({ success: true, message: "Success!", token: token });
               }
             }
           }

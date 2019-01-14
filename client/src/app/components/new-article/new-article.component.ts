@@ -67,8 +67,7 @@ export class NewArticleComponent implements OnInit {
       description: this.form.get('description').value,
       content: this.form.get('content').value,
       price: this.form.get('price').value,
-      category: this.form.get('category').value,
-      author: this.firstname + " " +this.lastname
+      category: this.form.get('category').value
     }
     this.managementService.registerArticle(article).subscribe(data => {
       console.log(data);
@@ -90,8 +89,8 @@ export class NewArticleComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getAccount().subscribe(account => {
-        this.firstname = account.user.firstname;
-        this.lastname = account.user.lastname;
+        // this.firstname = account.user.firstname;
+        // this.lastname = account.user.lastname;
     });
   }
 
