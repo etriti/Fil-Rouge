@@ -140,7 +140,8 @@ const userSchema = new Schema({
    password: { type: String, required: true, validate: passwordValidators },
    passwordConf: { type: String },
    permission: { type: String, required: true, default: 'user' },
-   date: { type: Date, default: Date.now }
+   date: { type: Date, default: Date.now },
+   lastConnex: { type: Date }
  });
 
 userSchema.pre('save', function(next) {

@@ -3,7 +3,6 @@ import { AuthService } from '../../services/auth.service';
 import { Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { RoleGuardService } from '../../guards/role-guard.service';
-import decode from 'jwt-decode';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +24,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.authService.ExpirationDate(),2000;
   }
 
 }

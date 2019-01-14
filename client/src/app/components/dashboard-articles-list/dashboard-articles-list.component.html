@@ -20,18 +20,22 @@
               <th>Category</th>
               <th>Author</th>
               <th>Date</th>
+              <th>*</th>
+              <th>*</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let article of articles | slice:0:30; index as i">
               <th scope="row">{{ i + 1 }}</th>
-              <td>{{article.title}}</td>
+              <td><a [routerLink]="['/article', article._id]">{{article.title}}</a></td>
               <td>{{article.description | slice:0:50}}</td>
               <td>{{article.content | slice:0:50}}</td>
               <td>{{article.price}}</td>
               <td>{{article.category}}</td>
               <td>{{article.author}}</td>
               <td>{{article.date | slice:0:10}}</td>
+              <td><i class="far fa-trash-alt"></i></td>
+              <td><i class="far fa-edit"></i></td>
             </tr>
           </tbody>
         </table>
