@@ -86,6 +86,37 @@ module.exports = (router) => {
     }).sort( { date: -1 } );
   });
 
+  router.delete('/deleteArticle/:id', function (req, res) {
+    const articleToDelete = req.params.id;
+    // console.log(articleToDelete);
+    if (!articleToDelete) {
+      res.json({ success: false, message: 'No ID provided' });
+    } else {
+      User.findOne({ id: req.decoded.id }, function (err, mainUser) {
+          if (err) throw err;
+
+          if (!mainUser) {
+             res.json({ success: false, message: 'No user found' });
+          } else {
+             if (mainUser.permission === "admin") {
+               Article.findOneAndRemove({ _id: articleToDelete }, function (err, article) {
+                 if (err) {
+                   res.json({ success: false, message: 'Invalid ID' });
+                 } else {
+                   if (!article) {
+                     res.json({ success: false, message: 'This article does not exists' });
+                   } else {
+                     res.json({ success: true, message: 'Article has been deleted' });
+                   }
+                 }
+               });
+             } else {
+               res.json({ success: false, message: 'Insufficient Permissions' });
+             }
+          }
+      });
+    }
+  });
 
   return router;
 }

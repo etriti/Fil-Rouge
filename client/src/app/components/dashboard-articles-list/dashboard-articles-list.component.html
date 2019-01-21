@@ -34,7 +34,7 @@
               <td>{{article.category}}</td>
               <td>{{article.author}}</td>
               <td>{{article.date | slice:0:10}}</td>
-              <td><i class="far fa-trash-alt"></i></td>
+              <td><a [routerLink]="['/dashboard/article', article._id]"><i class="far fa-trash-alt"></i></a></td>
               <td><i class="far fa-edit"></i></td>
             </tr>
           </tbody>

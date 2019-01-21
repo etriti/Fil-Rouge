@@ -39,4 +39,9 @@ export class ManagementService {
     return this.http.get(this.domain + 'management/allArticles', this.options).map(res => res.json());
   }
 
+  deleteArticle(id) {
+    this.createAuthenticationHeader();
+    return this.http.delete(this.domain + 'management/deleteArticle/' + id, this.options).map(res => res.json());
+  }
+
 }
