@@ -66,16 +66,16 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="btn btn-primary" *ngIf="authService.loggedIn() && authService.hasAccess()" routerLink="/dashboard">Dashboard</a>
+            <a class="btn btn-primary" *ngIf="authService.loggedIn() && authService.hasAccess()" routerLink="/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-primary login-btn" *ngIf="!authService.loggedIn()" routerLink="/login">Login</a>
+            <a class="btn btn-primary login-btn" *ngIf="!authService.loggedIn()" routerLink="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-primary login-btn" *ngIf="authService.loggedIn()" href="/" (click)="onLogoutClick()">Logout</a>
+            <a class="btn btn-primary login-btn" *ngIf="authService.loggedIn()" href="/" (click)="onLogoutClick()"><i class="fas fa-sign-out-alt"></i> Logout</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-outline-primary" *ngIf="!authService.loggedIn()" routerLink="/register">Sign up</a>
+            <a class="btn btn-outline-primary" *ngIf="!authService.loggedIn()" routerLink="/register"><i class="fas fa-user-plus"></i> Sign up</a>
           </li>
         </ul>
 

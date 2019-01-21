@@ -56,6 +56,7 @@ import { ArraySortPipe }   from './app.pipe';
 import { ArticleComponent } from './components/article/article.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { DeleteArticleComponent } from './components/delete-article/delete-article.component';
 
 export function tokenGetter() {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -106,7 +107,8 @@ export function tokenGetter() {
     DashboardSideMenuComponent,
     TruncatePipe,
     ArticleComponent,
-    ArraySortPipe
+    ArraySortPipe,
+    DeleteArticleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="col-sm-12 col-sm-offset-3 col-md-12 col-md-offset-2 main">
+      <br>
+      <div class="show-hide-message">
+        <div class="text-center" [ngClass]="messageClass">
+          {{ message }}
+          <p> {{ spinnerMessage }}</p>
+          <div [ngClass]="spinnerClass" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+  <!-- <hr> -->
+      <h2 class="sub-header text-center"></h2>
+      <div [hidden]="hideModal">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h4 class="modal-title text-center"><i class="fas fa-exclamation-triangle"></i> Confirm</h4>
+
+        </div>
+        <div class="modal-body">
+          <p>Are you sure to delete this article?</p>
+        </div>
+        <div class="modal-footer">
+          <div class="d-flex justify-content-center">
+            <button [disabled]="processing" type="button" name="button" class="btn btn-success confirmation-buttons" (click)="deleteArticle()">Yes</button>
+            <button [disabled]="processing" type="button" name="button" class="btn btn-danger confirmation-buttons" (click)="cancelDeleting()">No</button>
+          </div>
+
+        </div>
+      </div>
+      <br>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Content</th>
+              <th>Price €</th>
+              <th>Category</th>
+              <th>Author</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>-</th>
+              <td>{{article.title}}</td>
+              <td>{{article.description | slice:0:50}}</td>
+              <td>{{article.content | slice:0:50}}</td>
+              <td>{{article.price}}</td>
+              <td>{{article.category}}</td>
+              <td>{{article.author}}</td>
+              <td>{{article.date | slice:0:10}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+</div>
