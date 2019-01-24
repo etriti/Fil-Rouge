@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
   processing = false;
   emailValid;
   emailMessage;
+  spinnerClass;
+  spinnerMessage;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -130,6 +132,8 @@ export class RegisterComponent implements OnInit {
       } else {
         this.messageClass = 'alert alert-success';
         this.message = data.message;
+        this.spinnerClass = 'spinner-border';
+        this.spinnerMessage = 'Redirecting..';
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 2000);
@@ -144,11 +148,11 @@ export class RegisterComponent implements OnInit {
       if (data.success) {
         this.emailValid = false;
         this.emailMessage = data.message;
-        console.log(data);
+        // console.log(data);
       } else {
         this.emailValid = true;
         this.emailMessage = data.message;
-        console.log(data);
+        // console.log(data);
       }
     });
   }

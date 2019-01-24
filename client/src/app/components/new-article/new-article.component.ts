@@ -18,6 +18,8 @@ export class NewArticleComponent implements OnInit {
   email;
   firstname;
   lastname;
+  spinnerClass;
+  spinnerMessage;
 
 
   constructor(
@@ -80,6 +82,8 @@ export class NewArticleComponent implements OnInit {
         this.disableArticleForm();
         this.messageClass = 'alert alert-success';
         this.message = data.message;
+        this.spinnerClass = 'spinner-border';
+        this.spinnerMessage = 'Redirecting..';
         setTimeout(() => {
           this.router.navigate(['/dashboard/all-articles']);
         }, 2000);

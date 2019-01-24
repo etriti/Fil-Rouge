@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
   previousUrl;
   emailValid;
   emailMessage;
+  spinnerClass;
+  spinnerMessage;
 
   constructor(
 
@@ -65,6 +67,8 @@ export class LoginComponent implements OnInit {
         this.messageClass = 'alert alert-success';
         this.message = data.message;
         this.authService.storeUserData(data.token, data.user);
+        this.spinnerClass = 'spinner-border';
+        this.spinnerMessage = 'Redirecting..';
         setTimeout(() => {
           if (this.previousUrl) {
             this.router.navigate([this.previousUrl]);
