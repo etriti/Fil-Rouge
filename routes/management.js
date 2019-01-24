@@ -92,13 +92,13 @@ module.exports = (router) => {
     if (!articleToDelete) {
       res.json({ success: false, message: 'No ID provided' });
     } else {
-      User.findOne({ id: req.decoded.id }, function (err, mainUser) {
+      User.findOne({ _id: req.decoded.userId }, function (err, user) {
           if (err) throw err;
 
-          if (!mainUser) {
+          if (!user) {
              res.json({ success: false, message: 'No user found' });
           } else {
-             if (mainUser.permission === "admin") {
+             if (user.permission === "admin") {
                Article.findOneAndRemove({ _id: articleToDelete }, function (err, article) {
                  if (err) {
                    res.json({ success: false, message: 'Invalid ID' });
@@ -117,6 +117,78 @@ module.exports = (router) => {
       });
     }
   });
+
+
+  router.put('/updateArticle', function (req, res) {
+    // const articleToUpdate = req.params.id;
+    if (!req.body._id) {
+      res.json({ success: false, message: 'No article ID provided' });
+    } else {
+      Article.findOne({ _id: req.body._id }, function (err, article) {
+          if (err) {
+             res.json({ success: false, message: 'The articles id is not valid' });
+          } else {
+            if (!article) {
+              res.json({ success: false, message: 'Articles id was not found' });
+            } else {
+              User.findOne({ _id: req.decoded.userId }, function (err, user) {
+                const updateAuthor = user.firstname + user.lastname;
+                if (err) {
+                  res.json({ success: false, message: err });
+                } else {
+                  if (!user) {
+                    res.json({ success: false, message: 'No user found' });
+                  } else {
+                    if (user.permission === "admin") {
+                      article.title = req.body.title;
+                      article.img = req.body.img;
+                      article.description = req.body.description;
+                      article.content = req.body.content;
+                      article.price = req.body.price;
+                      article.category = req.body.category;
+                      article.updateAuthor = updateAuthor;
+                      article.updateDate = Date.now();
+                      article.save((err) => {
+                        if (err) {
+                          if (err.errors) {
+                            if (err.errors.title) {
+                              res.json({ success: false, message: err.errors.title.message });
+                            } else if (err.errors.img) {
+                              res.json({ success: false, message: err.errors.img.message });
+                            } else if (err.errors.description) {
+                              res.json({ success: false, message: err.errors.description.message });
+                            } else if (err.errors.content) {
+                              res.json({ success: false, message: err.errors.content.message });
+                            } else if (err.errors.price) {
+                              res.json({ success: false, message: err.errors.price.message });
+                            } else if (err.errors.category) {
+                              res.json({ success: false, message: err.errors.category.message });
+                            } else if (err.errors.author) {
+                              res.json({ success: false, message: err.errors.author.message });
+                            } else {
+                              res.json({ success: false, message: err.errmsg });
+                            }
+                          } else {
+                            res.json({ success: false, message: 'Could not save article. Error: ', err });
+                          }
+                          return;
+                        } else {
+                          res.json({ success: true, message: 'Article successfully updated' });
+                        }
+                      });
+                    } else {
+                      res.json({ success: false, message: 'Insufficient Permissions' });
+                    }
+                  }
+                }
+              });
+            }
+          }
+    });
+  }
+
+});
+
 
   return router;
 }

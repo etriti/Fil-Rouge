@@ -40,6 +40,7 @@ import { NewArticleComponent } from './components/new-article/new-article.compon
 import { DashboardArticlesListComponent } from './components/dashboard-articles-list/dashboard-articles-list.component';
 import { ArticleComponent } from './components/article/article.component';
 import { DeleteArticleComponent } from './components/delete-article/delete-article.component';
+import { EditArticleComponent } from './components/edit-article/edit-article.component';
 
 
 const appRoutes: Routes = [
@@ -198,8 +199,15 @@ const appRoutes: Routes = [
       expectedRole: 'admin'
     }
   },
-  { path: 'dashboard/article/:_id',
+  { path: 'dashboard/article/delete/:_id',
     component: DeleteArticleComponent,
+    canActivate: [AuthGuard, RoleGuardService],
+    data: {
+      expectedRole: 'admin'
+    }
+  },
+  { path: 'dashboard/article/edit/:_id',
+    component: EditArticleComponent,
     canActivate: [AuthGuard, RoleGuardService],
     data: {
       expectedRole: 'admin'

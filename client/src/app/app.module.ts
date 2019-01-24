@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -57,6 +57,7 @@ import { ArticleComponent } from './components/article/article.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DeleteArticleComponent } from './components/delete-article/delete-article.component';
+import { EditArticleComponent } from './components/edit-article/edit-article.component';
 
 export function tokenGetter() {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -108,11 +109,12 @@ export function tokenGetter() {
     TruncatePipe,
     ArticleComponent,
     ArraySortPipe,
-    DeleteArticleComponent
+    DeleteArticleComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,
-    // FormsModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,

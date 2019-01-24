@@ -14,7 +14,9 @@ const articleSchema = new Schema({
   category: { type: String, required: true },
   author: { type: String, required: true },
   date: { type: Date, default: Date.now },
-  views: { type: Number, required: true, default: 0 }
+  views: { type: Number, required: true, default: 0 },
+  updateAuthor: { type: String },
+  updateDate: {type: Date}
 });
 
 
